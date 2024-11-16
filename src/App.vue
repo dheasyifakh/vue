@@ -23,6 +23,10 @@ import {ref }from 'vue'
           newTask.value = '';
         }
       }
+
+      const deleteTasK = (index) =>{
+        tasks.value.splice(index, 1)
+      }
    
 </script>
 
@@ -43,7 +47,12 @@ import {ref }from 'vue'
   </form>
   <h3>Tasks:</h3>
   <ul>
-    <li v-for="task in tasks" :key="task">{{ task }}</li>
+    <li v-for="(task, index) in tasks" :key="task">
+      <span>
+        {{ task }}
+        <button @click="deleteTasK(index)">x</button>
+      </span>
+    </li>
   </ul>
   <!-- So v-bind it's for the value data -->
   <a v-bind:href="link">Click for google</a>
