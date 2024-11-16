@@ -1,21 +1,25 @@
-<script setup>
-import {ref }from 'vue'
-//composition API
-  //it just like react, in react useReact but in Vue using ref
-      const name= ref('John Doe');
-      const status = ref('active');
-      const tasks = ref(['Task One', 'Task Two', 'Task Three']);
-
-      const toggleStatus = () => {
-        if(status.value ==='active'){
-          status.value = 'pending';
-        }else if(status.value ==='pending'){
-          status.value = 'inactive';
+<script>
+  export default{
+    data(){
+      return{
+        name: 'John Doe',
+        status: 'active',
+        tasks: ['Task One', 'Task Two', 'Task Three'],
+        link: 'https://google.com'
+      }
+    },
+    methods:{
+      toggleStatus(){
+        if(this.status ==='active'){
+          this.status = 'pending';
+        }else if(this.status ==='pending'){
+          this.status = 'inactive';
         }else{
-          status.value = 'active';
+          this.status = 'active';
         }
       }
-   
+    }
+  }
 </script>
 
 <template>
