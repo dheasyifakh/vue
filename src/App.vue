@@ -1,5 +1,5 @@
 <script setup>
-import {ref }from 'vue'
+import {ref, onMounted }from 'vue'
 //composition API
   //it just like react, in react useReact but in Vue using ref
       const name= ref('John Doe');
@@ -28,6 +28,15 @@ import {ref }from 'vue'
         tasks.value.splice(index, 1)
       }
    
+   onMounted(async (params) => {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+      const data = await response.json()
+      tasks.value = data.map((task) => task.title)
+    } catch (error) {
+      console.log('Error fetching taskas')
+    }
+   })
 </script>
 
 <template>
